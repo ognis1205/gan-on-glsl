@@ -9,8 +9,8 @@ def binary_cross_entropy(
     name: Optional[str] = None
 ) -> tf.Tensor:
     eps = 1e-12
-    with ops.op_scope([logits, targets], name, "bce_loss") as name:
-        ls = ops.convert_to_tensor(logits, name="logits")
-        ts = ops.convert_to_tensor(targets, name="targets")
+    with ops.op_scope([logits, targets], name, 'bce_loss') as name:
+        ls = ops.convert_to_tensor(logits, name='logits')
+        ts = ops.convert_to_tensor(targets, name='targets')
         return tf.reduce_mean(
             -(ls * tf.log(ts + eps) + (1. - ls) * tf.log(1. - ts + eps)))
