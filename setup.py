@@ -12,6 +12,7 @@ setup(
         'tensorflow',
         'Pillow',
         'matplotlib',
-        'tqdm'
+        'tqdm',
+        'fire'
     ],
     packages=find_packages(exclude=["test", "test.*"]))
