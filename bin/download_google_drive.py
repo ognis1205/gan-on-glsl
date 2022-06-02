@@ -14,13 +14,16 @@ def download_google_drive(id, path):
         id (str): The Google drive identifier.
         path (str): The path to the output file.
     """
-    URL = "https://docs.google.com/uc?export=download"
+    URL = "https://docs.google.com/uc?export=download&confirm=t"
     session = requests.Session()
     response = session.get(
         URL,
         params = { 'id' : id },
         stream = True)
     token = get_token(response)
+    print(response)
+    print(response.headers)
+    print(token)
     if token:
         response = session.get(
             URL, 
@@ -48,12 +51,12 @@ def save(response, path):
                 progress.update(len(chunk))
                 tmp.write(chunk)
         tmp.flush()
-        with ZipFile(Path(tmp.name), "r") as zipped:
+        with ZipFile(Path(tmp.name), 'r') as zipped:
             path.mkdir(parents=True, exist_ok=True)
             zipped.extractall(path)
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     try:
         fire.Fire(download_google_drive)
     except Exception:

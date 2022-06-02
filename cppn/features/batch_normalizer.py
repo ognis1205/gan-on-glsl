@@ -1,5 +1,6 @@
 import tensorflow as tf
 
+
 class BatchNormalizer:
     def __init__(
         self,
