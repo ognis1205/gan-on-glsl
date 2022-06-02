@@ -13,6 +13,7 @@ setup(
         'Pillow',
         'matplotlib',
         'tqdm',
-        'fire'
+        'fire',
+        'jupyter'
     ],
     packages=find_packages(exclude=["test", "test.*"]))

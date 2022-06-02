@@ -1,4 +1,4 @@
-.PHONY: clean data lint requirements sync_data_to_s3 sync_data_from_s3 help
+.PHONY: clean data lint requirements help
 .DEFAULT_GOAL := help
 ROOT := $(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
 
@@ -23,7 +23,7 @@ install: requirements
 ## Make Dataset
 data: requirements
 	@echo "Downloading cat image dataset"
-	@python ./bin/download_google_drive.py "1KTF-OLTxijRwPbcNJdNMHYcZtIqPKksp" $(ROOT)/data/raw
+	@python ./bin/download_google_drive.py 1KTF-OLTxijRwPbcNJdNMHYcZtIqPKksp $(ROOT)/data/raw
 	@echo "Downloaded cat image dataset: "$(ROOT)/data/raw/cats
 
 help:
